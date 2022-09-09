@@ -3,6 +3,7 @@
 ## Pre-Prep
 
 In VSCode, install the extensions:
+
 - `Prettier`
 - `Firebase Explorer`
 - `GitHub Pull Requests & Issues`
@@ -11,6 +12,7 @@ In VSCode, install the extensions:
 The next step was to setup VSCode to be able to use multiple GitHub accounts.
 
 Edit the `settings.json` file your user accounts:
+
 ```
 "git-autoconfig.configList": [
     {"user.email": "hadella@flatearthinc.com", "user.name": "hadella"},
@@ -26,7 +28,7 @@ Edit the `settings.json` file your user accounts:
 > git config --global user.name "Pitchnogle"
 > ```
 
-In the lower part of VSCode, there is a icon above the settings icon which allows you to choose 
+In the lower part of VSCode, there is a icon above the settings icon which allows you to choose
 which user account to use.
 
 ## Prep
@@ -101,7 +103,7 @@ to generate a basic HTML page. Paste the authentication info from firebase into 
 		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
 		// TODO: Add SDKs for Firebase products that you want to use
 		// https://firebase.google.com/docs/web/setup#available-libraries
-	  
+
 		// Your web app's Firebase configuration
 		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 		const firebaseConfig = {
@@ -113,17 +115,18 @@ to generate a basic HTML page. Paste the authentication info from firebase into 
 		  appId: "1:873433441495:web:af3ed03e9d3aeaf390fc92",
 		  measurementId: "G-WHH5VGZ1WW"
 		};
-	  
+
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 		const analytics = getAnalytics(app);
 </script>
 ```
 
-The url given in the above todo doesn't provide the necessary import statements we need for 
+The url given in the above todo doesn't provide the necessary import statements we need for
 authentication and cloud firestore. [This](https://firebase.google.com/docs/web/learn-more#available-libraries) link does.
 
 Add the lines:
+
 ```
 import { } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js"
 import { } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js"
@@ -171,12 +174,12 @@ export default function Home() {
 }
 ```
 
-At the project root directory, create two new folders: `lib` and `components`. Then create the empty 
+At the project root directory, create two new folders: `lib` and `components`. Then create the empty
 files: `lib/hooks.js`, `lib/firebase.js`, and `components/Navbar.js`.
 
 ## Lesson 7 - Typescript
 
-This was an *optional* step. Since this is my first exposure to this technology, not going to use 
+This was an _optional_ step. Since this is my first exposure to this technology, not going to use
 it for this project.
 
 ## Lesson 8 - Firebase Setup
@@ -241,6 +244,7 @@ Start the server `npm run dev` and navigate to `localhost:3000/enter` to see pag
 We'll now create several more folders and pages. The ones in [] braces define dynamic routes.
 
 `[username]/index.js`:
+
 ```
 export default function UserProfilePage({ }) {
 	return (
@@ -252,6 +256,7 @@ export default function UserProfilePage({ }) {
 ```
 
 `[username]/[slug].js`:
+
 ```
 export default function PostPage({ }) {
 	return (
@@ -263,6 +268,7 @@ export default function PostPage({ }) {
 ```
 
 `admin/index.js`:
+
 ```
 export default function AdminPostsPage({ }) {
 	return (
@@ -274,6 +280,7 @@ export default function AdminPostsPage({ }) {
 ```
 
 `admin/[slug].js`:
+
 ```
 export default function AdminPostEdit({ }) {
 	return (
@@ -287,6 +294,7 @@ export default function AdminPostEdit({ }) {
 ## Lesson 10 - Loader
 
 Create a new file `components/loader.js` with the contents:
+
 ```
 export default function Loader({ show }) {
 	return show ? <div className="loader"></div> : null;
@@ -433,6 +441,7 @@ export default function Home() {
 ## Lesson 14 - Google SignIn
 
 Edit `lib/firebase.js` and add the following to the end of the file.
+
 ```
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 ```
@@ -451,9 +460,9 @@ export default function Enter(props) {
   // 3. user signed in, has username <SignOutButton />
   return (
     <main>
-      {user ? 
-        !username ? <UsernameForm /> : <SignOutButton /> 
-        : 
+      {user ?
+        !username ? <UsernameForm /> : <SignOutButton />
+        :
         <SignInButton />
       }
     </main>
@@ -483,7 +492,7 @@ function UsernameForm() {
 }
 ```
 
-If you go the enter page, once logged in, in the dev tools under Application there should be a 
+If you go the enter page, once logged in, in the dev tools under Application there should be a
 entry which has info about the authenticated user.
 
 ## Lesson 15 - Auth Context
@@ -591,7 +600,7 @@ import { useUserData} from '../lib/hooks';
 
 function MyApp({ Component, pageProps }) {
   const userData = useUserData();
-  
+
   return (
     <>
       <UserContext.Provider value={userData}>
@@ -607,4 +616,3 @@ npm install lodash.debounce
 ```
 
 The `enter.js` file implemented the `UsernameForm()` function. See the repo.
-
