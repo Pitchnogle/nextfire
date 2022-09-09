@@ -596,3 +596,15 @@ function MyApp({ Component, pageProps }) {
     <>
       <UserContext.Provider value={userData}>
 ```
+
+## Lesson 17 - Custom Usernames
+
+For the username validation, we don't want to trigger this continually. Instead, we will wait for
+500 ms from when the user stops typing. The library we use for this "debounce" is `losash.debounce`.
+
+```
+npm install lodash.debounce
+```
+
+The `enter.js` file implemented the `UsernameForm()` function. See the repo.
+
