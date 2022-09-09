@@ -1,8 +1,8 @@
-import '../styles/globals.css'
-import Navbar from '../components/Navbar';
-import { Toaster } from 'react-hot-toast';
-import { UserContext} from '../lib/context';
-import { useUserData} from '../lib/hooks';
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
+import { Toaster } from "react-hot-toast";
+import { UserContext } from "../lib/context";
+import { useUserData } from "../lib/hooks";
 
 function MyApp({ Component, pageProps }) {
   const userData = useUserData();
@@ -18,4 +18,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp
+export default MyApp;
