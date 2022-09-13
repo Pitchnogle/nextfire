@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Loader from "../components/Loader";
 import toast from "react-hot-toast";
-import { firestore, postToJSON } from "../lib/firebase";
+import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 import { useState } from "react";
 import PostFeed from "../components/PostFeed";
 

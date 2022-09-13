@@ -1,6 +1,7 @@
 import styles from "../../styles/Admin.module.css";
 import AuthCheck from "../../components/AuthCheck";
 import { firestore, auth, serverTimestamp } from "../../lib/firebase";
+import ImageUploader from "../../components/ImageUploader";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -110,6 +111,8 @@ function PostForm({ defaultValues, postRef, preview }) {
         {errors.content && (
           <p className="text-danger">{errors.content.message}</p>
         )}
+
+        <ImageUploader />
 
         <fieldset>
           <input

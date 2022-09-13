@@ -751,3 +751,24 @@ function PostForm({ defaultValues, postRef, preview }) {
   );
 }
 ```
+
+## Lesson 30 - Image Uploads
+
+We need to create a "bucket" for the images to go into. In the firebase console, go to Build->Storage
+and in the Files tab create a new folder called "uploads".
+
+We also need to modify the rules or we will get a permissions error. Choose the Rules tab, and for
+now, modify the rules to match.
+
+```
+rules_version = '2';
+service firebase.storage {
+    match /b/{bucket}/o {
+        match /{allPaths=**} {
+            allow read, write: if true;
+    }
+  }
+}
+```
+
+The rest of the code will match the lesson 30 video content. See the repo.
