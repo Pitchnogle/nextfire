@@ -673,3 +673,81 @@ function PostForm({ defaultValues, postRef, preview }) {
   );
 }
 ```
+
+## Lesson 29 - Form Validation
+
+This one was also a little tricky since due to version 7. To make it work, I had to review some docs
+on react-hook-form. The `formState` and `errors` are used slightly different.
+
+```js
+function PostForm({ defaultValues, postRef, preview }) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+    watch,
+    formState,
+  } = useForm({
+    defaultValues,
+    mode: "onChange",
+  });
+
+  const { isValid, isDirty } = formState;
+
+  const updatePost = async ({ content, published }) => {
+    await postRef.update({
+      content,
+      published,
+      updatedAt: serverTimestamp(),
+    });
+
+    reset({ content, published });
+
+    toast.success("Post updated successfully!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit(updatePost)}>
+      {preview && (
+        <div className="card">
+          <ReactMarkdown>{watch("content")}</ReactMarkdown>
+        </div>
+      )}
+
+      <div className={preview ? styles.hidden : styles.controls}>
+        <textarea
+          name="content"
+          {...register("content", {
+            required: { value: true, message: "content is required" },
+            maxLength: { value: 20000, message: "content is too long" },
+            minLength: { value: 10, message: "content is too short" },
+          })}
+        ></textarea>
+
+        {errors.content && (
+          <p className="text-danger">{errors.content.message}</p>
+        )}
+
+        <fieldset>
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            name="published"
+            {...register("published", { required: true })}
+          />
+          <label>Published</label>
+        </fieldset>
+
+        <button
+          type="submit"
+          className="btn-green"
+          disabled={!isDirty || !isValid}
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  );
+}
+```
