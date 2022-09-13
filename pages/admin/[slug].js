@@ -56,6 +56,7 @@ function PostManager() {
             <Link href={`/${post.username}/${post.slug}`}>
               <button className="btn-blue">Live view</button>
             </Link>
+            <DeletePostButton postRef={postRef} />
           </aside>
         </>
       )}
@@ -99,6 +100,8 @@ function PostForm({ defaultValues, postRef, preview }) {
       )}
 
       <div className={preview ? styles.hidden : styles.controls}>
+        <ImageUploader />
+
         <textarea
           name="content"
           {...register("content", {
@@ -111,8 +114,6 @@ function PostForm({ defaultValues, postRef, preview }) {
         {errors.content && (
           <p className="text-danger">{errors.content.message}</p>
         )}
-
-        <ImageUploader />
 
         <fieldset>
           <input
@@ -133,5 +134,24 @@ function PostForm({ defaultValues, postRef, preview }) {
         </button>
       </div>
     </form>
+  );
+}
+
+function DeletePostButton({ postRef }) {
+  const router = useRouter();
+
+  const deletePost = async () => {
+    const doIt = confirm("Are you sure?");
+    if (doIt) {
+      await postRef.delete();
+      router.push("/admin");
+      toast("Post deleted ", { icon: "🗑️" });
+    }
+  };
+
+  return (
+    <button className="btn-red" onClick={deletePost}>
+      Delete
+    </button>
   );
 }

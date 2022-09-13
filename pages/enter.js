@@ -1,5 +1,6 @@
 import { auth, firestore, googleAuthProvider } from "../lib/firebase";
 import { UserContext } from "../lib/context";
+import Metatags from "../components/Metatags";
 
 import { useEffect, useState, useCallback, useContext } from "react";
 import debounce from "lodash.debounce";
@@ -12,6 +13,7 @@ export default function Enter(props) {
   // 3. user signed in, has username <SignOutButton />
   return (
     <main>
+      <Metatags title="Enter" description="Sign Up for this amazing app!" />
       {user ? (
         !username ? (
           <UsernameForm />
@@ -32,9 +34,14 @@ function SignInButton() {
   };
 
   return (
-    <button className="btn-google" onClick={signInWithGoogle}>
-      <img src={"/google.png"} /> Sign in with Google
-    </button>
+    <>
+      <button className="btn-google" onClick={signInWithGoogle}>
+        <img src={"/google.png"} /> Sign in with Google
+      </button>
+      <button onClick={() => auth.signInAnonymously()}>
+        Sign in Anonymously
+      </button>
+    </>
   );
 }
 
@@ -88,8 +95,6 @@ function UsernameForm() {
       setIsValid(false);
     }
   };
-
-  //
 
   useEffect(() => {
     checkUsername(formValue);

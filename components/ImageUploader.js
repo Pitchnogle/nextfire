@@ -45,6 +45,7 @@ export default function ImageUploader() {
     <div className="box">
       <Loader show={uploading} />
       {uploading && <h3>{progress}%</h3>}
+
       {!uploading && (
         <>
           <label className="btn">
