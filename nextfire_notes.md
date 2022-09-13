@@ -37,9 +37,9 @@ This contains notes for an online Next/Firebase/React course.
 
 https://fireship.io/courses/react-next-firebase/
 
-```
+```json
 {
-    // ...
+  // ...
 
   "dependencies": {
     "firebase": "^8.2.1",
@@ -96,29 +96,29 @@ Create a new firebase project. I called mine 'firebasics'.
 In VSCode, create a new folder `public` with an `index.html` inside it. Type `!` and the tab key
 to generate a basic HTML page. Paste the authentication info from firebase into the head.
 
-```
+```html
 <script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-		  apiKey: "AIzaSyBhaCvJQdHJrTYZXMxUOupUUqHk7Dc_M2A",
-		  authDomain: "firebasics-95048.firebaseapp.com",
-		  projectId: "firebasics-95048",
-		  storageBucket: "firebasics-95048.appspot.com",
-		  messagingSenderId: "873433441495",
-		  appId: "1:873433441495:web:af3ed03e9d3aeaf390fc92",
-		  measurementId: "G-WHH5VGZ1WW"
-		};
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBhaCvJQdHJrTYZXMxUOupUUqHk7Dc_M2A",
+    authDomain: "firebasics-95048.firebaseapp.com",
+    projectId: "firebasics-95048",
+    storageBucket: "firebasics-95048.appspot.com",
+    messagingSenderId: "873433441495",
+    appId: "1:873433441495:web:af3ed03e9d3aeaf390fc92",
+    measurementId: "G-WHH5VGZ1WW",
+  };
 
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const analytics = getAnalytics(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 ```
 
@@ -127,9 +127,9 @@ authentication and cloud firestore. [This](https://firebase.google.com/docs/web/
 
 Add the lines:
 
-```
-import { } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js"
-import { } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js"
+```js
+import {} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+import {} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 ```
 
 ## Lesson 6 - Next.js Setup
@@ -161,16 +161,12 @@ Replace the contents of `styles/globals.css` with [this](https://raw.githubuserc
 
 Open `pages\index.js` and remove most of the code
 
-```
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+```js
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  return (
-    <div>
-
-    </div>
-  )
+  return <div></div>;
 }
 ```
 
@@ -227,13 +223,13 @@ sudo npm install -g firebase-tools
 
 Create `pages/enter.js` with the following content
 
-```
-export default function EnterPage({ }) {
-	return (
-		<main>
-			<h1>Sign Up</h1>
-		</main>
-	)
+```js
+export default function EnterPage({}) {
+  return (
+    <main>
+      <h1>Sign Up</h1>
+    </main>
+  );
 }
 ```
 
@@ -245,49 +241,49 @@ We'll now create several more folders and pages. The ones in [] braces define dy
 
 `[username]/index.js`:
 
-```
-export default function UserProfilePage({ }) {
-	return (
-		<main>
-			<h1>User Profile Page</h1>
-		</main>
-	)
+```js
+export default function UserProfilePage({}) {
+  return (
+    <main>
+      <h1>User Profile Page</h1>
+    </main>
+  );
 }
 ```
 
 `[username]/[slug].js`:
 
-```
-export default function PostPage({ }) {
-	return (
-		<main>
-			<h2>A Post</h2>
-		</main>
-	)
+```js
+export default function PostPage({}) {
+  return (
+    <main>
+      <h2>A Post</h2>
+    </main>
+  );
 }
 ```
 
 `admin/index.js`:
 
-```
-export default function AdminPostsPage({ }) {
-	return (
-		<main>
-			<h1>Admin Posts</h1>
-		</main>
-	)
+```js
+export default function AdminPostsPage({}) {
+  return (
+    <main>
+      <h1>Admin Posts</h1>
+    </main>
+  );
 }
 ```
 
 `admin/[slug].js`:
 
-```
-export default function AdminPostEdit({ }) {
-	return (
-		<main>
-			<h1>Edit Post</h1>
-		</main>
-	)
+```js
+export default function AdminPostEdit({}) {
+  return (
+    <main>
+      <h1>Edit Post</h1>
+    </main>
+  );
 }
 ```
 
@@ -295,9 +291,9 @@ export default function AdminPostEdit({ }) {
 
 Create a new file `components/loader.js` with the contents:
 
-```
+```js
 export default function Loader({ show }) {
-	return show ? <div className="loader"></div> : null;
+  return show ? <div className="loader"></div> : null;
 }
 ```
 
@@ -305,18 +301,18 @@ export default function Loader({ show }) {
 
 For now, edit `pages/index.js` to add in the spinning loader animation.
 
-```
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import Link from 'next/link';
-import Loader from '../components/Loader';
+```js
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import Loader from "../components/Loader";
 
 export default function Home() {
   return (
     <div>
       <Loader show />
     </div>
-  )
+  );
 }
 ```
 
@@ -324,8 +320,8 @@ export default function Home() {
 
 In this lesson, we will add content to the `components/Navbar.js` file:
 
-```
-import Link from 'next/link';
+```js
+import Link from "next/link";
 
 // Top navbar
 export default function Navbar() {
@@ -374,9 +370,9 @@ export default function Navbar() {
 In order to see the navbar, we could individually edit each index.js to use it. A more efficient
 approach is to edit the `_app.js` which is parent.
 
-```
-import '../styles/globals.css'
-import Navbar from '../components/Navbar';
+```js
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -384,10 +380,10 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
 ```
 
 ## Lesson 12 - Toast
@@ -400,10 +396,10 @@ npm i react-hot-toast
 
 Edit `_app.js` to add the toaster
 
-```
-import '../styles/globals.css'
-import Navbar from '../components/Navbar';
-import { Toaster } from 'react-hot-toast';
+```js
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -415,26 +411,26 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp
+export default MyApp;
 ```
 
 To test things out add a button to the main `index.html` and then click the button and see what
 happens.
 
-```
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import Link from 'next/link';
-import Loader from '../components/Loader';
-import toast from 'react-hot-toast'
+```js
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import Loader from "../components/Loader";
+import toast from "react-hot-toast";
 
 export default function Home() {
   return (
     <div>
       {/* <Loader show /> */}
-      <button onClick={() => toast.success('hello toast')}>Toast me</button>
+      <button onClick={() => toast.success("hello toast")}>Toast me</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -448,8 +444,8 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 In this lesson, we'll alter the `enter.js` file to add in Google authentication.
 
-```
-import { auth, googleAuthProvider } from '../lib/firebase';
+```js
+import { auth, googleAuthProvider } from "../lib/firebase";
 
 export default function Enter(props) {
   const user = null;
@@ -460,11 +456,15 @@ export default function Enter(props) {
   // 3. user signed in, has username <SignOutButton />
   return (
     <main>
-      {user ?
-        !username ? <UsernameForm /> : <SignOutButton />
-        :
+      {user ? (
+        !username ? (
+          <UsernameForm />
+        ) : (
+          <SignOutButton />
+        )
+      ) : (
         <SignInButton />
-      }
+      )}
     </main>
   );
 }
@@ -477,7 +477,7 @@ function SignInButton() {
 
   return (
     <button className="btn-google" onClick={signInWithGoogle}>
-      <img src={'/google.png'} /> Sign in with Google
+      <img src={"/google.png"} /> Sign in with Google
     </button>
   );
 }
@@ -502,24 +502,24 @@ to have a separate username which is not part of Google authentication.
 
 Create a new file `lib/context.js`.
 
-```
+```js
 import { createContext } from "react";
 
-export const UserContext = createContext({ user: null, username: null});
+export const UserContext = createContext({ user: null, username: null });
 ```
 
 Since the context is global we'll add it to `_app.js`.
 
-```
-import '../styles/globals.css'
-import Navbar from '../components/Navbar';
-import { Toaster } from 'react-hot-toast';
-import { UserContext} from '../lib/context';
+```js
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
+import { Toaster } from "react-hot-toast";
+import { UserContext } from "../lib/context";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <UserContext.Provider value={{ user: {}, username: 'justin'}}>
+      <UserContext.Provider value={{ user: {}, username: "justin" }}>
         <Navbar />
         <Component {...pageProps} />
         <Toaster />
@@ -528,7 +528,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp
+export default MyApp;
 ```
 
 > In this case, we are "hard-coding" the user name. We'll use the database later on.
@@ -536,7 +536,7 @@ export default MyApp
 To see the effects, we'll edit `components/Navbar.js`. We'll make some changes to the top of the
 file.
 
-```
+```js
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 
@@ -549,7 +549,7 @@ export default function Navbar() {
 
 We'll also make some edits to `enter.js`.
 
-```
+```js
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 
@@ -563,10 +563,10 @@ export default function Enter(props) {
 
 Update `lib/hooks.js`.
 
-```
-import { auth, firestore } from '../lib/firebase';
-import { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+```js
+import { auth, firestore } from "../lib/firebase";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // Custom hook to read  auth record and user profile doc
 export function useUserData() {
@@ -578,7 +578,7 @@ export function useUserData() {
     let unsubscribe;
 
     if (user) {
-      const ref = firestore.collection('users').doc(user.uid);
+      const ref = firestore.collection("users").doc(user.uid);
       unsubscribe = ref.onSnapshot((doc) => {
         setUsername(doc.data()?.username);
       });
@@ -595,7 +595,7 @@ export function useUserData() {
 
 Modify `_app.js` to replace the hard-coded user.
 
-```
+```js
 import { useUserData} from '../lib/hooks';
 
 function MyApp({ Component, pageProps }) {
@@ -616,3 +616,60 @@ npm install lodash.debounce
 ```
 
 The `enter.js` file implemented the `UsernameForm()` function. See the repo.
+
+## Lesson 28 - Post Editing Form
+
+Ran into an issue with `react-hook-form` version 7. The tutorial example was using version 6 and
+was causing issue for me.
+
+```js
+function PostForm({ defaultValues, postRef, preview }) {
+  const { register, handleSubmit, reset, watch } = useForm({
+    defaultValues,
+    mode: "onChange",
+  });
+
+  const updatePost = async ({ content, published }) => {
+    await postRef.update({
+      content,
+      published,
+      updatedAt: serverTimestamp(),
+    });
+
+    reset({ content, published });
+
+    toast.success("Post updated successfully!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit(updatePost)}>
+      {preview && (
+        <div className="card">
+          <ReactMarkdown>{watch("content")}</ReactMarkdown>
+        </div>
+      )}
+
+      <div className={preview ? styles.hidden : styles.controls}>
+        <textarea
+          name="content"
+          {...register("content", { required: true })}
+        ></textarea>
+
+        <fieldset>
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            name="published"
+            {...register("published", { required: true })}
+          />
+          <label>Published</label>
+        </fieldset>
+
+        <button type="submit" className="btn-green">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  );
+}
+```
