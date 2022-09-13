@@ -772,3 +772,12 @@ service firebase.storage {
 ```
 
 The rest of the code will match the lesson 30 video content. See the repo.
+
+## Lesson 31 - Hearts
+
+This is not currently working!
+
+> Possible issue on the firebase side. The video was not really clear on what is needed to get
+> things going. Initially able to 'unheart' many times. The next few lessons, some security rules
+> were made which now makes error when 'unheart' clicked -- which is sensible I guess since 'heart'
+> doesn't work. Those two should act as toggle...
