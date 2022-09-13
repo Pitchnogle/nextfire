@@ -1,4 +1,5 @@
 import { auth, firestore, googleAuthProvider } from "../lib/firebase";
+import { signInAnonymously, signInWithPopup } from "firebase/auth";
 import { UserContext } from "../lib/context";
 import Metatags from "../components/Metatags";
 
@@ -30,15 +31,15 @@ export default function Enter(props) {
 // Sign in with Google button
 function SignInButton() {
   const signInWithGoogle = async () => {
-    await auth.signInWithPopup(googleAuthProvider);
+    await signInWithPopup(auth, googleAuthProvider);
   };
 
   return (
     <>
       <button className="btn-google" onClick={signInWithGoogle}>
-        <img src={"/google.png"} /> Sign in with Google
+        <img src={"/google.png"} width="30px" /> Sign in with Google
       </button>
-      {/* <button onClick={() => auth.signInAnonymously()}>
+      {/* <button onClick={() => signInAnonymously(auth)}>
         Sign in Anonymously
       </button> */}
     </>
